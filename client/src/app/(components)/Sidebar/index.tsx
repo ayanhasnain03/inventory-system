@@ -9,10 +9,10 @@ const Sidebar = () => {
         <div className="flex items-center gap-3">
           <div className="p-2 bg-blue-500 text-white rounded-full">
             {/* Replace with actual logo */}
-            <span className="font-bold text-lg">A</span>
+            <span className="font-bold text-lg">E</span>
           </div>
           <h1 className="font-extrabold text-2xl text-gray-800 tracking-wide">
-            ADSTOCK
+            EDSTOCK
           </h1>
         </div>
 
