@@ -17,13 +17,10 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-
+import dashboardRoutes from "./routes/dashboardRoute";
 
 //ROUTES
-
-app.get("/hello",(req,res)=>{
-  res.send("Hello WOrld")
-})
+app.use("/dashboard", dashboardRoutes); // http://localhost:8000/dashboard
 
 
 /* SERVER */
