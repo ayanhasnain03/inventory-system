@@ -1,11 +1,11 @@
-import { createSlice ,PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface InitialStateTypes{
-  isSidebarCollapsed:boolean;
+export interface InitialStateTypes {
+  isSidebarCollapsed: boolean;
 }
 
-const initialState:InitialStateTypes = {
-  isSidebarCollapsed:false
+const initialState: InitialStateTypes = {
+  isSidebarCollapsed: false
 }
 
 export const globalSlice = createSlice({

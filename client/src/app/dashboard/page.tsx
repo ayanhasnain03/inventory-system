@@ -1,9 +1,22 @@
-import React from 'react'
+"use client";
+import CardPopularProducts from "@/app/dashboard/CardPopularProducts";
+import CardExpenseSummary from "./CardExpenseSummary";
+import CardPurchaseSummary from "./CardPurchaseSummary";
+import CardSalesSummary from "./CardSalesSummary";
+import StatCard from "./StatCard";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:overflow-auto gap-10 pb-4 custom-grid-rows">
+      <CardPopularProducts />
+      <CardSalesSummary />
+      <CardPurchaseSummary />
+      <CardExpenseSummary />
+      <StatCard />
+      <StatCard />
+      <StatCard />
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

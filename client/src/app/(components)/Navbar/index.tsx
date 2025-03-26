@@ -2,8 +2,8 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
-import { Bell, Menu, Moon, Settings, Sun } from "lucide-react";
-import Image from "next/image";
+import { Bell, Menu, Settings } from "lucide-react";
+
 import Link from "next/link";
 import React from "react";
 
@@ -12,7 +12,7 @@ const Navbar = () => {
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed
   );
-
+  
   const toggleSidebar = () => {
     dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
   };
@@ -25,6 +25,7 @@ const Navbar = () => {
           className="px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100"
           onClick={toggleSidebar}
         >
+
           <Menu className="w-4 h-4" />
         </button>
 
