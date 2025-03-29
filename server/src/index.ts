@@ -1,12 +1,14 @@
-import express from "express";
-import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cors from "cors";
-import morgan from "morgan";
+import dotenv from "dotenv";
+import express from "express";
 import helmet from "helmet";
+import morgan from "morgan";
 
 // Route Imports
-
+import dashboardRoutes from "./routes/dashboardRoute";
+import productRoutes from "./routes/productRoutes";
+import userRoutes from "./routes/userRoutes";
 /* CONFIGURATIONS */
 dotenv.config();
 const app = express();
@@ -17,11 +19,11 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-import dashboardRoutes from "./routes/dashboardRoute";
 
 //ROUTES
 app.use("/dashboard", dashboardRoutes); // http://localhost:8000/dashboard
-
+app.use("/products", productRoutes); // http://localhost:8000/products
+app.use("/users", userRoutes); // http://localhost:8000/products
 
 /* SERVER */
 const port = Number(process.env.PORT) || 3001;
