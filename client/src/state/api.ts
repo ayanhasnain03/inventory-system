@@ -86,6 +86,10 @@ export const api = createApi({
       query: () => "/users",
       providesTags: ["Users"],
     }),
+    getExpensesByCategory: build.query<ExpenseByCategorySummary[], void>({
+      query: () => "/expenses",
+      providesTags: ["Expenses"],
+    }),
   }),
 });
 export const {
@@ -93,4 +97,5 @@ export const {
   useGetProductsQuery,
   useCreateProductMutation,
   useGetUsersQuery,
+  useGetExpensesByCategoryQuery,
 } = api;
