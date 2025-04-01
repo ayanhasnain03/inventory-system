@@ -12,10 +12,9 @@ import {
   SlidersHorizontal,
   User,
 } from "lucide-react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 interface SidebarLinkProps {
   href: string;
@@ -81,7 +80,7 @@ const Sidebar = () => {
           isSidebarCollapsed ? "px-5" : "px-8"
         }`}
       >
-       <h1>Image</h1>
+        <h1>Image</h1>
         <h1
           className={`${
             isSidebarCollapsed ? "hidden" : "block"

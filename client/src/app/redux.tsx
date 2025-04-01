@@ -1,24 +1,24 @@
-import { useRef } from "react";
+import globalReducer from "@/state";
+import { api } from "@/state/api";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { useRef } from "react";
 import {
+  Provider,
   TypedUseSelectorHook,
   useDispatch,
   useSelector,
-  Provider,
 } from "react-redux";
-import globalReducer from "@/state";
-import { api } from "@/state/api";
-import { setupListeners } from "@reduxjs/toolkit/query";
 
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
@@ -26,13 +26,13 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
   return {
-    getItem(_key: any) {
+    getItem() {
       return Promise.resolve(null);
     },
-    setItem(_key: any, value: any) {
+    setItem(_key: string, value: string) {
       return Promise.resolve(value);
     },
-    removeItem(_key: any) {
+    removeItem() {
       return Promise.resolve();
     },
   };
@@ -48,6 +48,7 @@ const persistConfig = {
   storage,
   whitelist: ["global"],
 };
+
 const rootReducer = combineReducers({
   global: globalReducer,
   [api.reducerPath]: api.reducer,
@@ -87,11 +88,12 @@ export default function StoreProvider({
     setupListeners(storeRef.current.dispatch);
   }
 
-  const persistor = persistStore(storeRef.current);
+  // Correct typing for persistor
+  const persistor = useRef(persistStore(storeRef.current));
 
   return (
     <Provider store={storeRef.current}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor.current}>
         {children}
       </PersistGate>
     </Provider>
